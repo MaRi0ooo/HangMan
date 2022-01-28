@@ -1,1 +1,1 @@
-# HangMan-Game
+![plot](./assets/hngmlogo.jpg)
