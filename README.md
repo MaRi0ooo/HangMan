@@ -1,1 +1,1 @@
-![plot](./assets/hngmlogo.jpg?raw=true)
+![plot](./assets/hngmlogo.jpg?raw=true "Title")
