@@ -1,1 +1,1 @@
-![plot](./assets/hngmlogo.jpg)
+![plot](./assets/hngmlogo.jpg?raw=true)
