@@ -1,1 +1,3 @@
-![plot](./assets/hngmlogo.jpg?raw=true "Title")
+<center>
+  <img src="assets/hngmlogo.jpg">
+</center>
