@@ -16,8 +16,9 @@ private:
 	bool flag, game_status;
 	char game_end_flag;
 	int count_tries;
-	std::vector<char> alphabet = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
-	std::vector<int> grey_symb;
+	std::vector<char> alphabet;
+	std::vector<bool> grey_symb;
+
 public:
 	Game()
 	{
@@ -25,23 +26,17 @@ public:
 		loadWord();
 		game_status = false;
 		flag = true;
-		for (int i = 0; i < 26; i++) {
-			grey_symb.push_back(0);
-		}
+		for (int i = 0; i < 26; i++) { grey_symb.push_back(0); }
 	}
-	std::string getWord() {
-		return word;
-	}
+	std::string getWord() { return word; }
 	void loadWord()
 	{
 		srand(static_cast<unsigned int>(time(0)));
-		std::vector<std::string> words; std::string w;
+		std::vector<std::string> words;
+		std::string w;
 
 		std::ifstream file("CryptDictionary.txt");
-		for (file >> w; !file.eof(); file >> w)
-		{
-			words.push_back(w);
-		}
+		for (file >> w; !file.eof(); file >> w) { words.push_back(w); }
 		file.close();
 
 		for (size_t i = 0; i < words.size(); i++)
@@ -53,7 +48,7 @@ public:
 			}
 			words[i] = w;
 		}
-		int choose = rand() % 149; word = words[choose];
+		word = words[rand() % words.size()];
 	}
 
 	void drawHangMan()
@@ -69,9 +64,9 @@ public:
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -91,9 +86,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||" << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -113,9 +108,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        ()" << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t"; alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -135,9 +130,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||       (O)" << std::endl;
-			std::cout << "\t ||        |" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||        |" << "\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t";		 alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||        |" << "\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||        |" << "\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -157,9 +152,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||       (O)" << std::endl;
-			std::cout << "\t ||       /|" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||      / |" << "\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t";		 alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||       /|" << "\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||      / |" << "\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -170,7 +165,6 @@ public:
 			std::cout << "\t|*******************|" << std::endl;
 			std::cout << "\t|===================)" << std::endl;
 			break;
-
 		}
 		case 5:
 		{
@@ -180,9 +174,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||       (O)" << std::endl;
-			std::cout << "\t ||       /|\\" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||      / | \\" << "\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||" << "\t\t\t\t\t";		   alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||       /|\\" << "\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||      / | \\" << "\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||" << "\t\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -202,9 +196,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||       (O)" << std::endl;
-			std::cout << "\t ||       /|\\" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||      / | \\" << "\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||       /'" << "\t\t\t\t";   alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||       /|\\" << "\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||      / | \\" << "\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||       /'" << "\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||      /" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -224,9 +218,9 @@ public:
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||        |" << std::endl;
 			std::cout << "\t ||       (O)" << std::endl;
-			std::cout << "\t ||       /|\\" << "\t\t\t\t"; alphabetShow(1); std::cout << std::endl;
-			std::cout << "\t ||      / | \\" << "\t\t\t\t"; alphabetShow(2); std::cout << std::endl;
-			std::cout << "\t ||       /'\\" << "\t\t\t\t"; alphabetShow(3); std::cout << std::endl;
+			std::cout << "\t ||       /|\\" << "\t\t\t"; alphabetShow(1); std::cout << std::endl;
+			std::cout << "\t ||      / | \\" << "\t\t\t "; alphabetShow(2); std::cout << std::endl;
+			std::cout << "\t ||       /'\\" << "\t\t\t   "; alphabetShow(3); std::cout << std::endl;
 			std::cout << "\t ||      /   \\" << std::endl;
 			std::cout << "\t ||" << std::endl;
 			std::cout << "\t ||" << std::endl;
@@ -244,9 +238,10 @@ public:
 	{
 		if (choose == 1)
 		{
-			for (int i = 0; i < 11; i++)
+			for (int i = 0; i < 10; ++i)
 			{
-				if (grey_symb[i] == 1)
+				alphabet.push_back('A' + i);
+				if (grey_symb[i])
 				{
 					std::cout << color<8, 0> << alphabet[i] << color<7, 0> << " ";
 				}
@@ -258,9 +253,10 @@ public:
 		}
 		else if (choose == 2)
 		{
-			for (int i = 11; i < 22; i++)
+			for (int i = 10; i < 19; ++i)
 			{
-				if (grey_symb[i] == 1)
+				alphabet.push_back('A' + i);
+				if (grey_symb[i])
 				{
 					std::cout << color<8, 0> << alphabet[i] << color<7, 0> << " ";
 				}
@@ -272,9 +268,10 @@ public:
 		}
 		else if (choose == 3)
 		{
-			for (size_t i = 22; i < alphabet.size(); i++)
+			for (int i = 19; i < 26; ++i)
 			{
-				if (grey_symb[i] == 1)
+				alphabet.push_back('A' + i);
+				if (grey_symb[i])
 				{
 					std::cout << color<8, 0> << alphabet[i] << color<7, 0> << " ";
 				}
@@ -287,34 +284,38 @@ public:
 	}
 	void alphabetChange(char symbol)
 	{
-		switch (symbol)
+		// switch (symbol)
+		// {
+		// case 'a': { grey_symb[symbol - 'a'] = 1; break; }
+		// case 'b': { grey_symb[symbol - 'b'] = 1; break; }
+		// case 'c': { grey_symb[2] = 1; break; }
+		// case 'd': { grey_symb[3] = 1; break; }
+		// case 'e': { grey_symb[4] = 1; break; }
+		// case 'f': { grey_symb[5] = 1; break; }
+		// case 'g': { grey_symb[6] = 1; break; }
+		// case 'h': { grey_symb[7] = 1; break; }
+		// case 'i': { grey_symb[8] = 1; break; }
+		// case 'j': { grey_symb[9] = 1; break; }
+		// case 'k': { grey_symb[10] = 1; break; }
+		// case 'l': { grey_symb[11] = 1; break; }
+		// case 'm': { grey_symb[12] = 1; break; }
+		// case 'n': { grey_symb[13] = 1; break; }
+		// case 'o': { grey_symb[14] = 1; break; }
+		// case 'p': { grey_symb[15] = 1; break; }
+		// case 'q': { grey_symb[16] = 1; break; }
+		// case 'r': { grey_symb[17] = 1; break; }
+		// case 's': { grey_symb[18] = 1; break; }
+		// case 't': { grey_symb[19] = 1; break; }
+		// case 'u': { grey_symb[20] = 1; break; }
+		// case 'v': { grey_symb[21] = 1; break; }
+		// case 'w': { grey_symb[22] = 1; break; }
+		// case 'x': { grey_symb[23] = 1; break; }
+		// case 'y': { grey_symb[24] = 1; break; }
+		// case 'z': { grey_symb[25] = 1; break; }
+		// }
+		if(GetKeyState(symbol))
 		{
-		case 'a': { grey_symb[0] = 1; break; }
-		case 'b': { grey_symb[1] = 1; break; }
-		case 'c': { grey_symb[2] = 1; break; }
-		case 'd': { grey_symb[3] = 1; break; }
-		case 'e': { grey_symb[4] = 1; break; }
-		case 'f': { grey_symb[5] = 1; break; }
-		case 'g': { grey_symb[6] = 1; break; }
-		case 'h': { grey_symb[7] = 1; break; }
-		case 'i': { grey_symb[8] = 1; break; }
-		case 'j': { grey_symb[9] = 1; break; }
-		case 'k': { grey_symb[10] = 1; break; }
-		case 'l': { grey_symb[11] = 1; break; }
-		case 'm': { grey_symb[12] = 1; break; }
-		case 'n': { grey_symb[13] = 1; break; }
-		case 'o': { grey_symb[14] = 1; break; }
-		case 'p': { grey_symb[15] = 1; break; }
-		case 'q': { grey_symb[16] = 1; break; }
-		case 'r': { grey_symb[17] = 1; break; }
-		case 's': { grey_symb[18] = 1; break; }
-		case 't': { grey_symb[19] = 1; break; }
-		case 'u': { grey_symb[20] = 1; break; }
-		case 'v': { grey_symb[21] = 1; break; }
-		case 'w': { grey_symb[22] = 1; break; }
-		case 'x': { grey_symb[23] = 1; break; }
-		case 'y': { grey_symb[24] = 1; break; }
-		case 'z': { grey_symb[25] = 1; break; }
+			grey_symb[symbol] = 1;
 		}
 	}
 
@@ -331,7 +332,7 @@ public:
 		game_status = false;
 		startGame();
 	}
-	void drawHiddenWord(std::vector<int> position = { 99999 }, char letter = ' ')
+	void drawHiddenWord(std::vector<int> position = {99999}, char letter = ' ')
 	{
 		drawHangMan();
 		flag = true;
@@ -368,7 +369,10 @@ public:
 		game_status = false;
 		auto start = std::chrono::steady_clock::now();
 
-		for (size_t i = 0; i < word.size(); i++) { hidden_word += "_"; }
+		for (size_t i = 0; i < word.size(); i++)
+		{
+			hidden_word += "_";
+		}
 		drawHiddenWord();
 
 		bool wrong_trigger(true);
@@ -384,7 +388,6 @@ public:
 				gameStatistics(int(elapsed_seconds.count()));
 				break;
 			} // Game Over //
-
 
 			char letter;
 			std::cout << "\n\n\tEnter letter: ";
@@ -416,6 +419,9 @@ public:
 	}
 	void gameStatistics(int game_time)
 	{
+		Sleep(1200);
+	RETRY:
+		system("cls");
 		std::cout << "\n   ================================" << std::endl;
 		std::cout << "   |      S T A T I S T I C S     |" << std::endl;
 		std::cout << "   ================================" << std::endl;
@@ -432,31 +438,28 @@ public:
 		std::cout << "\n   --------------------------------" << std::endl;
 		std::cout << "\n   Time. . . . . . . . . . . . : " << game_time << " c";
 		std::cout << "\n   Hidden word . . . . . . . . : " << word;
-		std::cout << "\n   Guessed letters . . . . . . : "; for (size_t i = 0; i < hidden_word.size(); i++) { std::cout << hidden_word[i] << " "; }
+		std::cout << "\n   Guessed letters . . . . . . : ";
+		for (size_t i = 0; i < hidden_word.size(); i++)
+		{
+			std::cout << hidden_word[i] << " ";
+		}
 		std::cout << "\n   Count of mistakes . . . . . : " << count_tries;
 		std::cout << "\n\n   --------------------------------" << std::endl;
 
-		char ch(0);
-		std::cout << "\n\nDo you wanna play again  Yes[Y]/No[N] ?";
+		char ch('0');
+		std::cout << "\n  Do you want to try again? [Y/n]: ";
 		std::cin >> ch;
 
-		ch = tolower(ch);
-		if (ch == 'y')
-		{
-			refresh();
-		}
-		else
-		{
-			system("cls");
-			exit(0);
-		}
+		if (tolower(ch) == 'y') { refresh(); }
+		else if(tolower(ch) == 'n') { system("cls"); exit(0); }
+		else { goto RETRY; }
 	}
 };
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	Game game;
-	printLogo();
+	// printLogo();
 	game.startGame();
 	return 0;
 }

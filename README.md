@@ -1,5 +1,5 @@
 <center>
-  <img src="assets/hngmlogo.jpg">
+  <img src="https://i.imgur.com/HJ0o56W.jpeg">
 </center>
 
 # Description
