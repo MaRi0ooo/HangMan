@@ -284,35 +284,7 @@ public:
 	}
 	void alphabetChange(char symbol)
 	{
-		switch (symbol)
-		{
-		case 'a': { grey_symb[0] = 1; break; }
-		case 'b': { grey_symb[1] = 1; break; }
-		case 'c': { grey_symb[2] = 1; break; }
-		case 'd': { grey_symb[3] = 1; break; }
-		case 'e': { grey_symb[4] = 1; break; }
-		case 'f': { grey_symb[5] = 1; break; }
-		case 'g': { grey_symb[6] = 1; break; }
-		case 'h': { grey_symb[7] = 1; break; }
-		case 'i': { grey_symb[8] = 1; break; }
-		case 'j': { grey_symb[9] = 1; break; }
-		case 'k': { grey_symb[10] = 1; break; }
-		case 'l': { grey_symb[11] = 1; break; }
-		case 'm': { grey_symb[12] = 1; break; }
-		case 'n': { grey_symb[13] = 1; break; }
-		case 'o': { grey_symb[14] = 1; break; }
-		case 'p': { grey_symb[15] = 1; break; }
-		case 'q': { grey_symb[16] = 1; break; }
-		case 'r': { grey_symb[17] = 1; break; }
-		case 's': { grey_symb[18] = 1; break; }
-		case 't': { grey_symb[19] = 1; break; }
-		case 'u': { grey_symb[20] = 1; break; }
-		case 'v': { grey_symb[21] = 1; break; }
-		case 'w': { grey_symb[22] = 1; break; }
-		case 'x': { grey_symb[23] = 1; break; }
-		case 'y': { grey_symb[24] = 1; break; }
-		case 'z': { grey_symb[25] = 1; break; }
-		}
+		grey_symb[(static_cast<int>(symbol)) - (static_cast<int>('a'))] = 1;
 	}
 
 	void refresh()
