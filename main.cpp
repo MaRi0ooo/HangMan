@@ -416,7 +416,7 @@ public:
 
 		char ch('0');
 		std::cout << "\n  Do you want to try again? [Y/n]: ";
-		std::cin >> ch;
+		std::cin >> ch; std::cin.ignore(32767, '\n');
 
 		if (tolower(ch) == 'y') { refresh(); }
 		else if(tolower(ch) == 'n') { system("cls"); exit(0); }
