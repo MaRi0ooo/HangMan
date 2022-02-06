@@ -19,3 +19,8 @@ g++ main.cpp Animation.cpp Game.cpp -o hangman
 g++ main.cpp Animation.cpp Game.cpp -static-libstdc++ -static-libgcc -o hangman
 ```
 
+## Game image
+<center>
+  <img src="https://i.imgur.com/JLGhDG9.png">
+  <img src="https://i.imgur.com/hcjBa5a.png">
+</center>
