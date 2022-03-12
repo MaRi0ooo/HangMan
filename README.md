@@ -20,7 +20,7 @@ g++ main.cpp Animation.cpp Game.cpp -static-libstdc++ -static-libgcc -o hangman
 ```
 
 ## Game image
-<center>
+<p align="center" width="100%">
   <img src="https://i.imgur.com/JLGhDG9.png">
   <img src="https://i.imgur.com/hcjBa5a.png">
-</center>
+</p>
